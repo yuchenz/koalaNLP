@@ -1,4 +1,4 @@
-# KoalaNLP
+# koalaNLP
 Useful NLP scripts
 
  - processCH.py
