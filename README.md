@@ -12,4 +12,5 @@ Useful NLP scripts
  - line2tree.py
 
    convert string format parse trees in a file into tree format ones in standard output, or
+   
    convert a string format parse tree from standard input into a tree format one in standard output
