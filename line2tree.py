@@ -1,4 +1,4 @@
-#!/bin/python
+#!/usr/bin/python2.7
 # -*- coding: utf-8 -*-
 
 # convert a file of syntactic trees of sentences in the format of lines into format of tree structures
@@ -30,6 +30,7 @@ for line in lines:
 	if line == "\n":
 		continue
 	sentT = Tree(line)
+	sentT.draw()
 	print sentT.pprint()
 	print
 
