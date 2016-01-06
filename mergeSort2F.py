@@ -5,8 +5,8 @@
 import codecs, sys
 import pdb
 
-def sortLines(filename1, filename2):
-	f = codecs.open("/dev/shm/"+filename1+'_'+filename2+'.sorted', 'w', 'utf-8')
+def sortLines(filename1, filename2, filename3):
+	f = codecs.open("/dev/shm/"+filename3+'.sorted', 'w', 'utf-8')
 	f1 = codecs.open(filename1, 'r', 'utf-8')
 	f2 = codecs.open(filename2, 'r', 'utf-8')
 	
@@ -30,12 +30,14 @@ def sortLines(filename1, filename2):
 				break
 	
 	if flag == 2:
+		f.write(line1)
 		while True: 
 			try:
 				f.write(f1.next())
 			except StopIteration:
 				break
 	elif flag == 1:	
+		f.write(line2)
 		while True:
 			try:
 				f.write(f2.next())
@@ -45,4 +47,4 @@ def sortLines(filename1, filename2):
 	f.close()
 
 if __name__ == "__main__":
-	sortLines(sys.argv[1], sys.argv[2])
+	sortLines(sys.argv[1], sys.argv[2], sys.argv[3])
