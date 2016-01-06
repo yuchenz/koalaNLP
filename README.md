@@ -15,6 +15,6 @@ Useful NLP scripts
    
    convert a string format parse tree from standard input into a tree format one in standard output
 
- - sortFile.py
+ - mergeSort2F.py 
 
-   sort all the lines in a file, output filename.sorted
+   merge two sorted files into one sorted file
