@@ -18,3 +18,7 @@ Useful NLP scripts
  - mergeSort2F.py 
 
    merge two sorted files into one sorted file
+
+ - wa2latex.py
+
+   given foreign sentences file, English sentences file, word alignemnt file, all sentence aligned (one sentence per line), output a .tex file which generates a word alignment matrix using latex 
