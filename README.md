@@ -21,4 +21,4 @@ Useful NLP scripts
 
  - wa2latex.py
 
-   given foreign sentences file, English sentences file, word alignemnt file, all sentence aligned (one sentence per line), output a .tex file which generates a word alignment matrix using latex 
+   given foreign sentences file, English sentences file, gold word alignemnt file, auto word alignment file, all sentence aligned (one sentence per line), output a .tex file which generates a word alignment matrix using latex, output statistics about them 
