@@ -5,7 +5,7 @@ Useful NLP scripts
    
    Chinese data statistics and cleaning processor
  
- - parallelSents.py
+ - mt/parallelSents.py
    
    wholeFile and wholeParaFile are sentence level parallel files, one sentence per line; partFile contains a part of the sentences in wholeFile; select the according parallel sentences in wholeParaFile into partParaFile
 
@@ -19,6 +19,8 @@ Useful NLP scripts
 
    merge two sorted files into one sorted file
 
- - wa2latex.py
+ - mt/wa2latex.py
 
    given foreign sentences file, English sentences file, gold word alignemnt file, auto word alignment file, all sentence aligned (one sentence per line), output a .tex file which generates a word alignment matrix using latex, output statistics about them 
+
+   helper module mt/wa2latex_helper.py
