@@ -25,7 +25,7 @@ Useful NLP scripts
 
    helper module mt/wa2latex_helper.py
 
- - moses' tree binarization:
+ - parse tree binarization for MT:
 	
 	- mt/berkeleyparsed2mosesxml.perl  (from moses) 
 		
