@@ -39,7 +39,7 @@ Useful NLP scripts
 
 		convert moses' xml format trees into berkeley format trees (only works on left or right binarized trees, doesn't work on SAMTed trees)
 		
-	```	
-	echo "( (S (NN I) (NN you) (NN he) (NN she)))" | berkeleyparsed2mosesxml.perl | koala-relax-parse --RightBinarize | mosesxml2berkeleyparsed.py 
+	``` bash	
+	$ echo "( (S (NN I) (NN you) (NN he) (NN she)))" | berkeleyparsed2mosesxml.perl | koala-relax-parse --RightBinarize | mosesxml2berkeleyparsed.py 
 	(S (TOP (NN I) (^S (NN you) (^S (NN he) (NN she)))))
 	```
