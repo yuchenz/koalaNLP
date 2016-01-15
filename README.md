@@ -27,19 +27,26 @@ Useful NLP scripts
 
  - moses' tree binarization:
 	
-	- mt/berkeleyparsed2mosesxml.perl 
+	- mt/berkeleyparsed2mosesxml.perl  (from moses) 
 		
 		convert berkeley parsed trees into moses' xml format trees
 
-	- mt/koala-relax-parse
+	- mt/koala-relax-parse  (from moses)
 
-		binarize trees in moses' xml format (binarize options: --LeftBinarize, --RightBinarize, --SAMT 1-4)
+		binarize trees in moses' xml format 
+		
+		(binarize options: --LeftBinarize, --RightBinarize, --SAMT 1-4)
 
 	- mt/mosesxml2berkeleyparsed.py 
 
-		convert moses' xml format trees into berkeley format trees (only works on left or right binarized trees, doesn't work on SAMTed trees)
+		convert moses' xml format trees into berkeley format trees 
+		
+		(only works on left or right binarized trees, doesn't work on SAMTed trees)
 		
 	``` bash	
 	$ echo "( (S (NN I) (NN you) (NN he) (NN she)))" | berkeleyparsed2mosesxml.perl | koala-relax-parse --RightBinarize | mosesxml2berkeleyparsed.py 
+
 	(S (TOP (NN I) (^S (NN you) (^S (NN he) (NN she)))))
 	```
+
+
