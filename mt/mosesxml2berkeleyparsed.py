@@ -27,29 +27,40 @@ def convert(line):
 
 	stack = []
 	berkeleyFormatTree = ""
-	for node in nodeList:
+	i = 0
+	while i < len(nodeList):
+		node = nodeList[i]
 		if node[0] != node[1]:
 			stack.append(node)
 			berkeleyFormatTree += "(" + node[2] + " "
 		else:
-			berkeleyFormatTree += "(" + node[2] + " " + wordList[node[0]] + ") "
+			tmpNodeList = [node[2]]
+			count = 0
+			while i < len(nodeList) - 1 and nodeList[i + 1][0] == node[0] and nodeList[i + 1][1] == node[1]: 
+				tmpNodeList.append(nodeList[i + 1][2])
+				i += 1
+				count += 1
+			tmpNodeList.reverse()
+			for tmpNode in tmpNodeList:
+				berkeleyFormatTree += "(" + tmpNode + " "
+			berkeleyFormatTree += wordList[node[0]] + ")" * count + ") "
+
 			while stack != [] and node[1] == stack[-1][1]:
 				if berkeleyFormatTree[-1] == " ":
 					berkeleyFormatTree = berkeleyFormatTree[:-1] + ") "
 				else: 
 					berkeleyFormatTree += ") "
 				stack.pop()
+		i += 1
 	
 	if stack == []:
-		return berkeleyFormatTree + '\n'
+		return berkeleyFormatTree
 	else:
 		return "ERROR: illegal xml format tree!!!"
 
 if __name__ == "__main__":
-	#sys.stdin = codecs.getreader('utf-8')(sys.stdin)
-	#sys.stdout = codecs.getreader('utf-8')(sys.stdout)
-	sys.stdout.write('\n')
+	#sys.stdin = codecs.getreader('UTF-8')(sys.stdin)
+	#sys.stdout = codecs.getwriter('UTF-8')(sys.stdout)
 	for line in sys.stdin:
-		sys.stdout.write(convert(line + '\n'))
-	sys.stdout.write('\n')
+		sys.stdout.write(convert(line).encode('utf-8') + '\n')
 
