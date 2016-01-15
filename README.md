@@ -39,7 +39,7 @@ Useful NLP scripts
 
 	- mt/mosesxml2berkeleyparsed.py 
 
-		convert moses' xml format trees into berkeley format trees 
+		convert moses' binarized xml format trees into berkeley format trees 
 		
 		(only works on left or right binarized trees, doesn't work on SAMTed trees)
 		
