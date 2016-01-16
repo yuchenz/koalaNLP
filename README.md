@@ -5,10 +5,6 @@ Useful NLP scripts
    
    Chinese data statistics and cleaning processor
  
- - mt/parallelSents.py
-   
-   wholeFile and wholeParaFile are sentence level parallel files, one sentence per line; partFile contains a part of the sentences in wholeFile; select the according parallel sentences in wholeParaFile into partParaFile
-
  - line2tree.py
 
    convert string format parse trees in a file into tree format ones in standard output, or
@@ -18,6 +14,15 @@ Useful NLP scripts
  - mergeSort2F.py 
 
    merge two sorted files into one sorted file
+
+ - isLegalTree.py
+
+   check if trees from stdin are legal trees that can be parsed by nltk.Tree
+
+### for MT
+ - mt/parallelSents.py
+   
+   wholeFile and wholeParaFile are sentence level parallel files, one sentence per line; partFile contains a part of the sentences in wholeFile; select the according parallel sentences in wholeParaFile into partParaFile
 
  - mt/wa2latex.py
 
