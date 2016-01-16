@@ -11,6 +11,9 @@ import codecs
 from xml.etree import ElementTree as ET
 
 def convert(line):
+	if line.strip() == '':
+		return "(())"
+
 	#print line
 	xml = ET.fromstring("<boundary> " + line + " </boundary>")
 	#for node in xml.iter(): print node.tag, node.attrib
