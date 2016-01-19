@@ -54,4 +54,9 @@ Useful NLP scripts
 	(S (TOP (NN I) (^S (NN you) (^S (NN he) (NN she)))))
 	```
 
+ - flatten parse trees for MT:
 
+	- mt/flattenTree.py
+
+	  syntax: cat filename | flattenTree.py level
+	  filename is a file of parse trees, one tree per line; level is how much to flatten the trees (level >= 4)
