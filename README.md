@@ -30,6 +30,10 @@ Useful NLP scripts
 
    helper module mt/wa2latex_helper.py
 
+ - mt/featureModifier.py
+
+   modify features for rules in a Moses phrase table
+
  - parse tree binarization for MT:
 	
 	- mt/berkeleyparsed2mosesxml.perl  (from moses) 
