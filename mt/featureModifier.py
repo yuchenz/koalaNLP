@@ -7,7 +7,7 @@
 # for rules that are not in the second table, keep their original weights
 #
 
-# replace-remove mode:
+# replaceRemove mode:
 # basically the same with the replace mode, except that 
 # for rules that are not in the second table, remove them from the first table too
 #
@@ -39,9 +39,7 @@ def getBigDict(fromFile):
 
 	return bigDict
 	
-def replace(toFile, fromFile, remove):
-	bigDict = getBigDict(fromFile)
-
+def replace(bigDict, toFile, fromFile, remove):
 	print "writing out the replaced small rule table ..."
 	if remove:
 		outF = codecs.open(toFile+'.replaceRemoved', 'w', 'utf-8')
@@ -64,9 +62,7 @@ def replace(toFile, fromFile, remove):
 	
 	outF.close()
 
-def augment(toFile, fromFile):
-	bigDict = getBigDict(fromFile)
-
+def augment(bigDict, toFile, fromFile):
 	print("writing out the augmented small rule table ...")
 	outF = codecs.open(toFile+'.augmented', 'w', 'utf-8')
 	for line in codecs.open(toFile, 'r', 'utf-8'):
@@ -82,13 +78,16 @@ def augment(toFile, fromFile):
 	outF.close()
 
 if __name__ == "__main__":
-	mode = sys.argv[1]
-	if mode == 'replace':
-		replace(sys.argv[2], sys.argv[3], False)
-	elif mode == 'replace-remove':
-		replace(sys.argv[2], sys.argv[3], True)
-	elif mode == "augment":
-		augment(sys.argv[2], sys.argv[3])
-	else:
+	mode = sys.argv[1].split('-')
+	print("mode is: ", ' '.join(mode))
+	if 'replace' not in mode and 'replaceRemove' not in mode and 'augment' not in mode:
 		print("Error!")
-		print("syntax: python featureModifier.py [replace | replace-remove | augment] toFile fromFile")
+		print("syntax: python featureModifier.py [replace-replaceRemove-augment] toFile fromFile")
+	else:
+		bigDict = getBigDict(sys.argv[3])
+		if 'replace' in mode:
+			replace(bigDict, sys.argv[2], sys.argv[3], False)
+		if 'replaceRemove' in mode:
+			replace(bigDict, sys.argv[2], sys.argv[3], True)
+		if "augment" in mode:
+			augment(bigDict, sys.argv[2], sys.argv[3])
