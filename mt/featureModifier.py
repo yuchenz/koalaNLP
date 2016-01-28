@@ -7,6 +7,11 @@
 # for rules that are not in the second table, keep their original weights
 #
 
+# replace-remove mode:
+# basically the same with the replace mode, except that 
+# for rules that are not in the second table, remove them from the first table too
+#
+
 # augment mode:
 # given two rule tables (used by hiero mt systems), most rules in the first table is also in the second one, some are not
 #
@@ -34,18 +39,26 @@ def getBigDict(fromFile):
 
 	return bigDict
 	
-def replace(toFile, fromFile):
+def replace(toFile, fromFile, remove):
 	bigDict = getBigDict(fromFile)
 
 	print "writing out the replaced small rule table ..."
-	outF = codecs.open(toFile+'.replaced', 'w', 'utf-8')
+	if remove:
+		outF = codecs.open(toFile+'.replaceRemoved', 'w', 'utf-8')
+	else:
+		outF = codecs.open(toFile+'.replaced', 'w', 'utf-8')
+
 	for line in codecs.open(toFile, 'r', 'utf-8'):
 		line = line.split("|||")
 		key = tuple((line[0], line[1], line[3]))
-		outF.write(key[0] + '|||' + key[1] + '|||')
 		if key not in bigDict:
-			outF.write(line[2] + "|||" + key[2] + "|||" + "|||".join(line[4:]))
+			if remove: 
+				continue
+			else:
+				outF.write(key[0] + '|||' + key[1] + '|||')
+				outF.write(line[2] + "|||" + key[2] + "|||" + "|||".join(line[4:]))
 		else:
+			outF.write(key[0] + '|||' + key[1] + '|||')
 			value = bigDict[key]
 			outF.write(value[0] + "|||" + key[2] + "|||" + value[1])
 	
@@ -71,9 +84,11 @@ def augment(toFile, fromFile):
 if __name__ == "__main__":
 	mode = sys.argv[1]
 	if mode == 'replace':
-		replace(sys.argv[2], sys.argv[3])
+		replace(sys.argv[2], sys.argv[3], False)
+	elif mode == 'replace-remove':
+		replace(sys.argv[2], sys.argv[3], True)
 	elif mode == "augment":
 		augment(sys.argv[2], sys.argv[3])
 	else:
 		print("Error!")
-		print("syntax: python featureModifier.py [replace | augment] toFile fromFile")
+		print("syntax: python featureModifier.py [replace | replace-remove | augment] toFile fromFile")
