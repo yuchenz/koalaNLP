@@ -77,14 +77,48 @@ def augment(bigDict, toFile, fromFile):
 	
 	outF.close()
 
+def stat(bigDict, toFile, fromFile):
+	print("stat ...")
+	notInBigD, inBigD, nontermRule1, termRule1, nontermRule2, termRule2 = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+	for line in codecs.open(toFile, 'r', 'utf-8'):
+		line = line.split('|||')
+		key = tuple((line[0], line[1], line[3]))
+		if key not in bigDict:
+			notInBigD += 1
+			if '[X][X]' in line[0]:
+				nontermRule1 += 1
+			else:
+				termRule1 += 1
+		else:
+			inBigD += 1
+			if '[X][X]' in line[0]:
+				nontermRule2 += 1
+			else:
+				termRule2 += 1
+	
+	total = notInBigD + inBigD
+	print("total rules in %s: %d\n" % (toFile, int(total)))
+
+	print("%.2f %% phrase pair rules" % ((termRule1 + termRule2) * 100.0 / total))
+	print("%.2f %% rules with nonterminals\n" % ((nontermRule1 + nontermRule2) * 100.0 / total))
+
+	print("%.2f %% not in %s" % (notInBigD * 100.0 / total, fromFile))
+	print("\tamong which %.2f %% is phrase pair rules" % (termRule1 * 100.0 / notInBigD))
+	print("\tamong which %.2f %% is rules with nonterminals\n" % (nontermRule1 * 100.0 / notInBigD))
+	print("%.2f %% in %s" % (inBigD * 100.0 / total, fromFile))
+	print("\tamong which %.2f %% is phrase pair rules" % (termRule2 * 100.0 / inBigD))
+	print("\tamong which %.2f %% is rules with nonterminals\n" % (nontermRule2 * 100.0 / inBigD))
+
 if __name__ == "__main__":
 	mode = sys.argv[1].split('-')
 	print("mode is: ", ' '.join(mode))
-	if 'replace' not in mode and 'replaceRemove' not in mode and 'augment' not in mode:
+	if 'replace' not in mode and 'replaceRemove' not in mode and 'augment' not in mode and 'stat' not in mode:
 		print("Error!")
-		print("syntax: python featureModifier.py [replace-replaceRemove-augment] toFile fromFile")
+		print("syntax: python featureModifier.py [stat-replace-replaceRemove-augment] toFile fromFile")
 	else:
 		bigDict = getBigDict(sys.argv[3])
+		if 'stat' in mode:
+			stat(bigDict, sys.argv[2], sys.argv[3])
 		if 'replace' in mode:
 			replace(bigDict, sys.argv[2], sys.argv[3], False)
 		if 'replaceRemove' in mode:
