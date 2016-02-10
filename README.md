@@ -34,7 +34,7 @@ Useful NLP scripts
 
    modify features for rules in a Moses phrase table
 
- - parse tree binarization for MT:
+ - parse tree binarization for MT (method 1):
 	
 	- mt/berkeleyparsed2mosesxml.perl  (from moses) 
 		
@@ -58,6 +58,12 @@ Useful NLP scripts
 	(S (TOP (NN I) (^S (NN you) (^S (NN he) (NN she)))))
 	```
 
+ - parse tree binarization for MT (method 2):
+
+	 - mt/treeBinarizer.py
+
+		a rule-based parse tree binarizer
+
  - flatten parse trees for MT:
 
 	- mt/flattenTree.py
@@ -65,3 +71,4 @@ Useful NLP scripts
 	  syntax: cat filename | flattenTree.py level
 
 	  filename is a file of parse trees, one tree per line; level is how much to flatten the trees (level >= 4)
+
