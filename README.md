@@ -19,6 +19,10 @@ Useful NLP scripts
 
    check if trees from stdin are legal trees that can be parsed by nltk.Tree
 
+ - tree2latex.py
+
+   given a file of parse trees (annotated in berkeley parse tree format), output a .tex file which draws the trees in latex
+
 ### for MT
  - mt/parallelSents.py
    
