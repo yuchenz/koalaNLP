@@ -4,6 +4,10 @@ Useful NLP scripts
  - processCH.py
    
    Chinese data statistics and cleaning processor
+
+ - preprocBPS.py
+
+   preprocess data for Berkeley Parser
  
  - line2tree.py
 
