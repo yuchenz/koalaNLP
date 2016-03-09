@@ -27,6 +27,14 @@ Useful NLP scripts
 
    given a file of parse trees (annotated in berkeley parse tree format), output a .tex file which draws the trees in latex
 
+ - tokenizer.perl
+
+   the tokenizer from moses
+
+ - lowercase.perl
+
+   the lowercaser from moses
+
 ### for MT
  - mt/parallelSents.py
    
