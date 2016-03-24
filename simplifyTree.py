@@ -28,13 +28,13 @@ def simplifyTree(tr):
 			for child in pointer:
 				stack.append(child)
 
-	return tr
+	return 
 
 if __name__ == '__main__':
 	import sys
 	import nltk
 	for tree in sys.stdin:
 		tr = nltk.Tree(tree)
-		simTr = simplifyTree(tr)
-		print simTr.pprint().encode('utf-8')
+		simplifyTree(tr)
+		print tr.pprint().encode('utf-8')
 
