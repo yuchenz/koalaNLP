@@ -27,9 +27,13 @@ Useful NLP scripts
 
    given a file of parse trees (annotated in berkeley parse tree format), output a .tex file which draws the trees in latex
 
+ - simplifyTree.py
+
+   given a tree, reduce redundant levels (see code for explanations)
+
  - tokenizer.perl
 
-   the tokenizer from moses
+   the tokenizer from moses (use -a option)
 
  - lowercase.perl
 
