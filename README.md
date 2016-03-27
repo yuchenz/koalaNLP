@@ -31,6 +31,10 @@ Useful NLP scripts
 
    given a tree, reduce redundant levels (see code for explanations)
 
+ - evalMalletMaxEnt.py
+
+   evaluate the output of Mallet MaxEnt model
+
  - tokenizer.perl
 
    the tokenizer from moses (use -a option)
