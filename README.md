@@ -96,3 +96,9 @@ Useful NLP scripts
 
 	  filename is a file of parse trees, one tree per line; level is how much to flatten the trees (level >= 4)
 
+ - mt/waMatrix_oneLine.py
+
+   convert between oneline representation and matrix representation of the word alignments on a sentence pair
+
+
+
