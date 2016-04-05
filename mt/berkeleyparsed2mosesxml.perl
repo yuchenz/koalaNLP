@@ -37,8 +37,8 @@ while(<STDIN>) {
   s/\)/ <\/tree> /g;
   s/\"\-LRB\-\"/\"LRB\"/g; # labels
   s/\"\-RRB\-\"/\"RRB\"/g;
-  s/\-LRB\-/\(/g; # tokens
-  s/\-RRB\-/\)/g;
+  #s/\-LRB\-/\(/g; # tokens
+  #s/\-RRB\-/\)/g;
   s/ +/ /g;
   s/ $//g;
   
