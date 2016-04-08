@@ -27,13 +27,16 @@ def outputTail(outf):
 
 def convert(inf, outf):
 	outputHead(outf)
-	for line in inf:
-		outf.write('\\begin{tikzpicture}[ultra thick, scale=1]\n\Tree ')
+	for i, line in enumerate(inf):
+		outf.write("\n\nSent \\#" + str(i) + '\n\n')
+		scale = min(1, 400.0/len(line))
+		outf.write('\\begin{tikzpicture}[ultra thick, scale='+str(scale)+']\n\Tree ')
 		line = re.sub('\(', '[.', line)
 		line = re.sub('\[. ', '[ ', line)
 		line = re.sub('\)', ' ]', line)
 		outf.write(line)
-		outf.write('\end{tikzpicture}')
+		outf.write('\end{tikzpicture}\n\n')
+		outf.write('\clearpage')
 	outputTail(outf)
 	outf.close()
 

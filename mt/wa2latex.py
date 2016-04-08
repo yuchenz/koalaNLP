@@ -78,7 +78,7 @@ class Analyzer:
 				tmp += str(wa[0])+"/"+str(wa[1])+", "
 			outf.write("\\renewcommand\extrawa{"+tmp[:-2]+"}\n")
 
-			outf.write(latex_draw_matrix+"\n\n")
+			outf.write(latex_draw_matrix+"\n\n\clearpage\n\n")
 
 		outf.write(latex_post)
 		outf.close()
@@ -125,10 +125,10 @@ class Analyzer:
 
 
 if __name__ == "__main__":
-	gold_wa_f = sys.argv[1]
+	gold_wa_f = sys.argv[1]    # gold word alignment file, format: 0-0 1-1 2-3 (i.e. word id in language 1 - word id in language 2)
 	auto_wa_f = sys.argv[2]
-	en_f = sys.argv[3]
-	ch_f = sys.argv[4]
+	en_f = sys.argv[3]			# language 1 sentence file
+	ch_f = sys.argv[4]			# language 2 sentence file
 	outputTexFile = sys.argv[5]
 
 	analyzer = Analyzer(gold_wa_f, auto_wa_f, en_f, ch_f)
