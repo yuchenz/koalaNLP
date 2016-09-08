@@ -134,5 +134,3 @@ if __name__ == "__main__":
 	analyzer = Analyzer(gold_wa_f, auto_wa_f, en_f, ch_f)
 	analyzer.visualize(outputTexFile)
 	analyzer.statistics()
-
-
