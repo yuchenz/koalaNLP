@@ -25,12 +25,9 @@ if op == "file":
 elif op == "sent":
 	lines.append(sys.argv[2])
 
-print
 for line in lines:
 	if line == "\n":
 		continue
-	sentT = Tree(line)
-	sentT.draw()
-	print sentT.pprint()
-	print
-
+	sentT = Tree.fromstring(line)
+	#sentT.draw()
+	print(sentT.pprint())
