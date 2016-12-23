@@ -18,19 +18,25 @@ def char_loss_rate(raw_dir, processed_dir):
     pre-processed data.
     '''
     raw_data = read_data_from_dir(raw_dir)
+    raw_data_wo_space = ''.join(raw_data.strip().split())
     processed_data = read_data_from_dir(processed_dir)
+    processed_data_wo_space = ''.join(processed_data.strip().split())
 
-    return len(processed_data), len(raw_data)
+    return (len(processed_data), len(raw_data), 
+        len(raw_data_wo_space), len(processed_data_wo_space))
 
 
 if __name__ == '__main__':
     raw_dir = sys.argv[1]
     processed_dir = sys.argv[2]
 
-    processed_char_count, raw_char_count = char_loss_rate(
+    process_count1, raw_count1, raw_count2, process_count2 = char_loss_rate(
         raw_dir, processed_dir)
 
-    print("raw characters: {}".format(raw_char_count))
-    print("processed characters: {}".format(processed_char_count))
-    print("loss rate: {:.2%}".format(
-        (raw_char_count - processed_char_count) / raw_char_count))
+    print("raw characters: {}, without spaces: {}".format(
+        raw_count1, raw_count2))
+    print("processed characters: {}, without spaces: {}".format(
+        process_count1, process_count2))
+    print("loss rate: {:.2%}, without spaces: {:.2%}".format(
+        (raw_count1 - process_count1) / raw_count1,
+        (raw_count2 - process_count2) / raw_count2))
