@@ -10,10 +10,9 @@ def trim(lines, long_th, short_th):
         if len(line.split()) >= short_th 
         and len(line.split()) <= long_th]
 
-
 if __name__ == '__main__':
-    short_threshold = int(sys.argv[1])
-    long_threshold = int(sys.argv[2])
+    short_threshold = sys.argv[1]
+    long_threshold = sys.argv[2]
     filename = sys.argv[3]
 
     lines = codecs.open(filename, 'r', 'utf-8')
