@@ -15,7 +15,7 @@ if __name__ == '__main__':
     long_threshold = sys.argv[2]
     filename = sys.argv[3]
 
-    lines = codecs.open(filename, 'r', 'utf-8')
+    lines = codecs.open(filename, 'r', 'utf-8').readlines()
 
     print('longest sent: {}'.format(
         max([len(line.split()) for line in lines])))
